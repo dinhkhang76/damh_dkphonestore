@@ -1,0 +1,64 @@
+﻿@model MVC_Basic.Context.Brand_2119110143
+
+@{
+    ViewBag.Title = "Xoá thương hiệu";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content my-2">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="row">
+                        <div class="col-6"><strong class="text-primary text-uppercase" style="font-size:22px"> XÓA thương hiệu</strong></div>
+
+                        <div class="col-md-6 text-right">
+                            <div class="form-actions no-color">
+                                <button class="btn btn-sm btn-danger mx-0" type="submit"><b>Xóa</b></button>
+                                <a href="@Url.Action("Edit","Brand",new { id = Model.Id })" class="btn btn-sm btn-success"><i class="fas fa-edit">&nbspCập nhật</i></a>
+                                <a href="@Url.Action("Index","Brand")" class="btn btn-sm btn-info"><i class="fas fa-arrow-left"></i>&nbsp&nbspVề danh sách</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="card-body">
+                <span style="font-weight:bold;color:red;font-size:20px">Bạn có chắc muốn xóa thương hiệu này không?</span>
+                <br />
+                <table class="table table-bordered table-striped">
+                    <tr class="bg-info">
+                        <th style="width:200px">Tên trường</th>
+                        <th>Nội dung</th>
+                    </tr>
+                    <tr>
+                        <td>Tên thương hiệu</td>
+                        <td>@Html.DisplayFor(model => model.Name)</td>
+                    </tr>
+                    <tr>
+                        <td>Hình ảnh</td>
+                        <td>@Html.DisplayFor(model => model.Avatar)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Ngày tạo</td>
+                        <td>@Html.DisplayFor(model => model.CreatedOnUtc)</td>
+                    </tr>
+                    <tr>
+                        <td>Ngày cập nhật </td>
+                        <td>@Html.DisplayFor(model => model.UpdateOnUtc)</td>
+                    </tr>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+</div>

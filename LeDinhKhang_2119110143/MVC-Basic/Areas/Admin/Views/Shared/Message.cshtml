@@ -1,0 +1,9 @@
+﻿@* Thông báo lỗi *@
+@if (TempData.ContainsKey("message"))
+{
+    XMessage message = (XMessage)TempData["message"];
+    <div class="alert alert-@message.TypeMsg">
+        @message.Msg
+    </div>
+}
+

@@ -1,0 +1,61 @@
+﻿@model MVC_Basic.Context.Brand_2119110143
+
+@{
+    ViewBag.Title = "Cập nhật thương hiệu";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+
+@using (Html.BeginForm("Edit", "Brand", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.CreatedOnUtc)
+
+    <div class="content-wrapper">
+
+        <!-- Main content -->
+        <section class="content my-2">
+
+            <!-- Default box -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong class="text-danger text-uppercase" style="font-size:22px">CẬP NHẬT thương hiệu</strong>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <button class="btn btn-sm btn-success" type="submit" name="create"><i class="fas fa-save"></i> &nbspCập nhật</button>
+                            <a href="@Url.Action("Index","Brand")" class="btn btn-sm btn-info"><i class="fas fa-long-arrow-alt-left"></i> &nbspVề danh sách</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label>Tên thương hiệu<span class="text-danger">(*)</span></label><br />
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Hình ảnh</label><br />
+                                <input type="file" name="ImageUpload" />
+                                @Html.ValidationMessageFor(model => model.ImageUpload, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+        </section>
+        <!-- /.content -->
+    </div>
+}

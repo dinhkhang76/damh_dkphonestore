@@ -1,0 +1,81 @@
+﻿@model MVC_Basic.Context.Category_2119110143
+
+@{
+    ViewBag.Title = "Chi tiết danh mục";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content my-2">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong class="text-uppercase text-danger" style="font-size:22px">CHI TIẾT danh mục</strong>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <a href="@Url.Action("Edit","Category", new { id = Model.Id })" class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Cập nhật</a>
+                        <a href="@Url.Action("Index","Category")" class="btn btn-sm btn-info"><i class="fas fa-long-arrow-alt-left"></i> Về danh sách</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-striped">
+                    <tr class="bg-info">
+                        <th style="width:200px">Tên trường</th>
+                        <th>Nội dung</th>
+                    </tr>
+                    <tr>
+                        <td>Tên danh mục</td>
+                        <td>@Html.DisplayFor(model => model.Name)</td>
+                    </tr>
+                    <tr>
+                        <td>Hình ảnh</td>
+                        <td><img src="~/Content/images/category/@Model.Avatar" style="height:110px"</td>
+                    </tr>
+
+                    <tr>
+                        <td>Danh mục phổ biến</td>
+                        @if (Model.IsPopular == null)
+                        {
+                            <td>
+                                <svg  xmlns="http://www.w3.org/2000/svg" width="25" height="30" fill="currentColor" class="bi bi-x-lg text-danger"style="font-weight:bold" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z" />
+                                    <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z" />
+                                </svg>
+                            </td>
+
+                        }
+                        else
+                        {
+                            <td>
+                                <svg class="text-success" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                    <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                                </svg>
+                            </td>
+
+                        }
+                    </tr>
+
+
+                    </tr>
+                    <tr>
+                        <td>Ngày tạo</td>
+                        <td>@Html.DisplayFor(model => model.CreatedOnUtc)</td>
+                    </tr>
+                    <tr>
+                        <td>Ngày cập nhật</td>
+                        <td>@Html.DisplayFor(model => model.UpdatedOnUtc)</td>
+                    </tr>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+</div>

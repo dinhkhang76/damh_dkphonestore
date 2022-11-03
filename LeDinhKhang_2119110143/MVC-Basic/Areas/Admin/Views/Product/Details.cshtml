@@ -1,0 +1,143 @@
+﻿@model MVC_Basic.Context.Product_2119110143
+
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <section class="content my-2">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong class="text-uppercase text-danger" style="font-size:22px">CHI TIẾT SẢN PHẨM</strong>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <a href="@Url.Action("Edit","Product", new { id = Model.Id })" class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Cập nhật</a>
+                        <a href="@Url.Action("Index","Product")" class="btn btn-sm btn-info"><i class="fas fa-long-arrow-alt-left"></i> Về danh sách</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tr class="bg-info">
+                        <th style="width:320px;">Tên trường</th>
+                        <th>Nội dung</th>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.Name)</td>
+                        <td>@Html.DisplayFor(model => model.Name)</td>
+                    </tr>
+
+                    <tr>
+                        <td>Danh mục</td>
+
+                        @if (Model.CategoryId == 1)
+                        {
+                            <td>Điện thoại</td>
+                        }
+                        @if (Model.CategoryId == 2)
+                        {
+                            <td>Laptop</td>
+                        }
+                        @if (Model.CategoryId == 3)
+                        {
+                            <td>Tablet</td>
+                        }
+                        @if (Model.CategoryId == 7)
+                        {
+                            <td>Phụ kiện</td>
+                        }
+
+                    </tr>
+                    <tr>
+                        <td>Hình ảnh</td>
+                        <td><img src="~/Content/images/items/@Model.Avatar" style="height:110px"</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.FullDescription)</td>
+                        <td>@Html.Raw(Model.FullDescription)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.ShortDes)</td>
+                        <td>@Html.DisplayFor(model => model.ShortDes)</td>
+                    </tr>
+                    <tr>
+
+                        @if (Model.TypeId == 1)
+                        {
+                            <td>@Html.DisplayNameFor(model => model.TypeId)</td>
+                            <td>Giảm giá sốc</td>
+
+                        }
+                        @if (Model.TypeId == 2)
+                        {
+                            <td>@Html.DisplayNameFor(model => model.TypeId)</td>
+                            <td>Đề xuất</td>
+
+                        }
+                        else
+                        {
+
+                        }
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.BrandId)</td>
+                        @if (Model.BrandId == 1)
+                        {
+                            <td>Apple</td>
+                        }
+                        @if (Model.BrandId == 2)
+                        {
+                            <td>Samsung</td>
+                        }
+                        @if (Model.BrandId == 3)
+                        {
+                            <td>Xiaomi</td>
+                        }
+                        @if (Model.BrandId == 4)
+                        {
+                            <td>Dell</td>
+                        }
+                        @if (Model.BrandId == 5)
+                        {
+                            <td>HP</td>
+                        }
+                        @if (Model.BrandId == 6)
+                        {
+                            <td>Lenovo</td>
+                        }
+                        @if (Model.BrandId == 7)
+                        {
+                            <td>Asus</td>
+                        }
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.Price)</td>
+                        <td>@string.Format("{0:0,0}", Model.Price)<sup>đ</sup></td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.PriceDiscount)</td>
+                        <td>@string.Format("{0:0,0}", Model.PriceDiscount)<sup>đ</sup></td>
+                    </tr>
+                    <tr>
+                        <td>Ngày tạo</td>
+                        <td>@Html.DisplayFor(model => model.CreatedOnUtc)</td>
+                    </tr>
+                    <tr>
+                        <td>Ngày cập nhật</td>
+                        <td>@Html.DisplayFor(model => model.UpdatedOnUtc)</td>
+                    </tr>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+</div>

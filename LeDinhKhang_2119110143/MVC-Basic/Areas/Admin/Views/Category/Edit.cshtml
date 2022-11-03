@@ -1,0 +1,69 @@
+﻿@model MVC_Basic.Context.Category_2119110143
+
+@{
+    ViewBag.Title = "Cập nhật danh mục";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+
+@using (Html.BeginForm("Edit", "Category", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.CreatedOnUtc)
+
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content my-2">
+
+            <!-- Default box -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong class="text-danger text-uppercase" style="font-size:22px">CẬP NHẬT danh mục</strong>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <button class="btn btn-sm btn-success" type="submit" name="create"><i class="fas fa-save"></i> &nbspCập nhật</button>
+                            <a href="@Url.Action("Index","Category")" class="btn btn-sm btn-info"><i class="fas fa-long-arrow-alt-left"></i> &nbspVề danh sách</a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <label>Tên danh mục</label> <br />
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                <label>Hình ảnh</label><br />
+                                <input type="file" name="ImageUpload" />
+                                @Html.ValidationMessageFor(model => model.ImageUpload, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                        <div class="col-md-4" style="margin-left:100px;">
+
+
+                            <div class="form-group">
+                                <label>Loại danh mục</label>
+                                @Html.DropDownListFor(model => model.IsPopular, ViewBag.CategoryType as SelectList, "Chọn loại danh mục", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.IsPopular)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+        </section>
+        <!-- /.content -->
+    </div>
+}

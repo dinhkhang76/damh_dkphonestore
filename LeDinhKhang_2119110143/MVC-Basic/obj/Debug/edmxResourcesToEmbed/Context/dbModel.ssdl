@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WebSiteBanHangModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Brand_2119110143">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Avatar" Type="nvarchar" MaxLength="255" />
+    <Property Name="Slug" Type="varchar" MaxLength="100" />
+    <Property Name="ShowOnHomePage" Type="bit" />
+    <Property Name="DisplayOrder" Type="int" />
+    <Property Name="CreatedOnUtc" Type="datetime" />
+    <Property Name="UpdateOnUtc" Type="datetime" />
+    <Property Name="Deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="Category_2119110143">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Avatar" Type="nchar" MaxLength="100" />
+    <Property Name="IsPopular" Type="int" />
+    <Property Name="Slug" Type="varchar" MaxLength="100" />
+    <Property Name="ShowOnHomePage" Type="bit" />
+    <Property Name="DisplayOrder" Type="int" />
+    <Property Name="Deleted" Type="bit" />
+    <Property Name="CreatedOnUtc" Type="datetime" />
+    <Property Name="UpdatedOnUtc" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Order_2119110143">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderDetail_2119110143">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderId" Type="int" />
+    <Property Name="ProductId" Type="int" />
+    <Property Name="Quantity" Type="int" />
+  </EntityType>
+  <EntityType Name="Product_2119110143">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Avatar" Type="nchar" MaxLength="100" />
+    <Property Name="CategoryId" Type="int" />
+    <Property Name="TypeId" Type="int" />
+    <Property Name="BrandId" Type="int" />
+    <Property Name="ShortDes" Type="nvarchar(max)" />
+    <Property Name="FullDescription" Type="nvarchar(max)" />
+    <Property Name="Price" Type="float" />
+    <Property Name="PriceDiscount" Type="float" />
+    <Property Name="Slug" Type="varchar" MaxLength="50" />
+    <Property Name="Deleted" Type="bit" />
+    <Property Name="ShowOnHomePage" Type="bit" />
+    <Property Name="DisplayOrder" Type="int" />
+    <Property Name="CreatedOnUtc" Type="datetime" />
+    <Property Name="UpdatedOnUtc" Type="datetime" />
+  </EntityType>
+  <EntityType Name="User_2119110143">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="IsAdmin" Type="bit" />
+  </EntityType>
+  <EntityContainer Name="WebSiteBanHangModelStoreContainer">
+    <EntitySet Name="Brand_2119110143" EntityType="Self.Brand_2119110143" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category_2119110143" EntityType="Self.Category_2119110143" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order_2119110143" EntityType="Self.Order_2119110143" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderDetail_2119110143" EntityType="Self.OrderDetail_2119110143" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product_2119110143" EntityType="Self.Product_2119110143" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_2119110143" EntityType="Self.User_2119110143" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

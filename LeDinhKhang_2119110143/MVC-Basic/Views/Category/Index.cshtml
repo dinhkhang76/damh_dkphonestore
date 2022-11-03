@@ -1,0 +1,55 @@
+﻿@model List<MVC_Basic.Context.Category_2119110143>
+@{
+    ViewBag.Title = "Tất cả danh mục";
+}
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+    <div class="container">
+        <h2 class="text-center text-primary test">TẤT CẢ DANH MỤC</h2><br />
+
+        <nav class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3">
+
+                    <div class="card">
+                        <div class="img-wrap l my-2" style="background: white;width:200px;margin-left:60px">
+                            <a href="@Url.Action("ProductCategory","Category",new { Id = item.Id })">
+                                <img src="~/Content/images/category/@item.Avatar">
+
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title text-center text-uppercase"><a href="@Url.Action("ProductCategory","Category",new { Id = item.Id })">@item.Name</a></h4>
+
+                        </div>
+                    </div>
+                </div> <!-- col.// -->
+
+            }
+
+            @*@foreach (var item in Model)
+            {
+                <div class="col-md-3">
+
+                    <div class="card">
+                        <div class="img-wrap l my-2" style="background: white;width:200px;margin-left:60px">
+                            <a href="@Url.Action("ProductCategory","Category",new { Id = item.Id })">
+                                <img src="~/Content/images/category/@item.Avatar">
+
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title"><a href="@Url.Action("ProductCategory","Category",new { Id = item.Id })">@item.Name</a></h4>
+
+                        </div>
+                    </div>
+                </div>
+            }*@
+
+        </nav> <!-- row.// -->
+
+    </div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->

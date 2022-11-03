@@ -1,0 +1,56 @@
+﻿@model MVC_Basic.Context.Brand_2119110143
+
+@{
+    ViewBag.Title = "Chi tiết thương hiệu";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content my-2">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong class="text-uppercase text-danger" style="font-size:22px">CHI TIẾT thương hiệu</strong>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <a href="@Url.Action("Edit","Brand", new { id = Model.Id })" class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Cập nhật</a>
+                        <a href="@Url.Action("Index","Brand")" class="btn btn-sm btn-info"><i class="fas fa-long-arrow-alt-left"></i> Về danh sách</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-striped">
+                    <tr class="bg-info">
+                        <th style="width:200px">Tên trường</th>
+                        <th>Nội dung</th>
+                    </tr>
+                    <tr>
+                        <td>Tên thương hiệu</td>
+                        <td>@Html.DisplayFor(model => model.Name)</td>
+                    </tr>
+                    <tr>
+                        <td>Hình ảnh</td>
+                        <td><img src="~/Content/images/brand/@Model.Avatar" style="height:110px"</td>
+                    </tr>
+
+                    <tr>
+                        <td>Ngày tạo</td>
+                        <td>@Html.DisplayFor(model => model.CreatedOnUtc)</td>
+                    </tr>
+                    <tr>
+                        <td>Ngày cập nhật </td>
+                        <td>@Html.DisplayFor(model => model.UpdateOnUtc)</td>
+                    </tr>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+</div>
